@@ -1,6 +1,8 @@
 node
 {
-    def mavenHome = tool name: "maven3.8.4"
+    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
+    def mavenHome = tool name: "maven3.8.4"   
+    
     stage('CheckOutCode'){
         git branch: 'development', 
         credentialsId: '8dd6c89c-f5dd-4563-9342-03c78b0457cb', 
