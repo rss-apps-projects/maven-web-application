@@ -30,10 +30,10 @@ node
     
   
     stage('SendEmailNotification'){
-        mail bcc: 'devopstraningblr@gmail.com', body: '''Build Succeeded !!!
+        mail bcc: 'rajajanaawsdevops@gmail.com', body: '''Build Successful 
 
         Regards
-        Rajas Technologies''', cc: 'devopstraningblr@gmail.com', from: '', 
-        replyTo: '', subject: 'Build Status', to: 'devopstraningblr@gmail.com'
+        Rajas Technologies''', cc: 'rajajanaawsdevops@gmail.com', from: '', replyTo: '', 
+        subject: 'Build Status', to: 'rajajanaawsdevops@gmail.com'
     }
 }
