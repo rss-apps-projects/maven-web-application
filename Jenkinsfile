@@ -24,7 +24,7 @@ node
     
     stage('DeployApplicationIntoTomcat'){
         sshagent(['3b4d9247-d2d2-4048-83a6-cc559ec8065f']) {
-         sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.232.3.179:/opt/apache-tomcat-9.0.58/webapps"
+         sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.109.3.203:/opt/apache-tomcat-9.0.58/webapps"
         }
     }
     
