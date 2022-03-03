@@ -55,7 +55,7 @@ pipeline
         }
         */
     }
-    
+    /*
     post{
         success{
             mail bcc: 'rajajana8985@gmail.com', body: '''Build Success!!!
@@ -72,4 +72,5 @@ pipeline
             subject: 'Build Failed!!!', to: 'rajajana8985@gmail.com'
         }
     }
+    */
 }
