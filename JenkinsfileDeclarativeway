@@ -1,0 +1,89 @@
+pipeline
+{
+    agent any
+    tools{
+        maven "maven3.8.4"
+    }
+    options{
+        
+        buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))
+        
+        timestamps()
+        
+    }
+    
+    triggers{
+        // POLL SCM
+        pollSCM('* * * * *')
+        // BUILD PERIODICALLY
+        //cron('* * * * *')
+        // GITHUB WEB HOOK
+        //githubPush()
+    }
+    
+    stages{
+        stage('CheckOutCode'){
+            steps{
+                git branch: 'development', credentialsId: '8dd6c89c-f5dd-4563-9342-03c78b0457cb', 
+                url: 'https://github.com/rss-apps-projects/maven-web-application.git'
+            }
+        }
+        
+        stage('run-parallel'){
+            steps{
+                parallel(
+                    Build: {
+                        sh "mvn clean package"
+                    },    
+                    ExecuteSonarQubeReport: {
+                        sh "mvn clean sonar:sonar"
+                    },
+                    UploadArtipactIntoNexusRepo: {
+                        sh "mvn clean deploy"
+                    }
+                )
+            }
+        }
+        /*
+        stage('Build'){
+            steps{
+                sh "mvn clean package"
+            }
+        }
+        stage('ExecuteSonarQubeReport'){
+            steps{
+                sh "mvn clean sonar:sonar"
+            }
+        }
+        stage('UploadArtifactIntoNexusRepo'){
+            steps{
+                sh "mvn clean deploy"
+            }
+        }
+        */
+        stage('DeployApplicationIntoTomcatServer'){
+            steps{
+                sshagent(['3b4d9247-d2d2-4048-83a6-cc559ec8065f']){
+                    sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.235.78.121:/opt/apache-tomcat-9.0.58/webapps"
+                }
+            }
+        }
+    }
+    
+    post{
+        success{
+            mail bcc: 'rajajana8985@gmail.com', body: '''Build Success!!!
+
+            Regards
+            Rajas Technologies''', cc: 'rajajana8985@gmail.com', from: '', replyTo: '',
+            subject: 'Build Success!!!', to: 'rajajana8985@gmail.com'
+        }
+        failure{
+            mail bcc: 'rajajana8985@gmail.com', body: '''Build Failed!!!
+
+            Regards
+            Rajas Technologies''', cc: 'rajajana8985@gmail.com', from: '', replyTo: '',
+            subject: 'Build Failed!!!', to: 'rajajana8985@gmail.com'
+        }
+    }
+}
