@@ -2,9 +2,7 @@ pipeline
 {
    //agent any
    
-   agent{
-    label: 'wallmart-node'
-   }
+   agent 'wallmart-node'
    
     tools{
         maven "maven3.8.4"
