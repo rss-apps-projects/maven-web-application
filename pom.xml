@@ -22,7 +22,7 @@
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
 		
-		<sonar.host.url>http://13.233.159.4:9000/</sonar.host.url>
+		<sonar.host.url>http://13.127.194.83:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>admin123</sonar.password>		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,13 +99,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Releases Nexus Repository</name>
-	      <url>http://3.110.88.139:8081/repository/wallmart-release/</url>
+	      <url>http://13.233.62.120:8081/repository/wallmart-release/</url>
 	    </repository>
 	   
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Snapshot Nexus Repository </name>
-	      <url>http://3.110.88.139:8081/repository/wallmart-snapshot/</url>
+	      <url>http://13.233.62.120:8081/repository/wallmart-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
