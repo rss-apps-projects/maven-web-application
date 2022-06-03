@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MithunTechnologies- Home Page..</title>
+<title>RajasTechnologies- Home Page..</title>
 <link href="images/mithunlogo.jpg" rel="icon">
 </head>
 </head>
@@ -47,8 +47,8 @@ out.println("Server Host Name :: "+inetAddress.getHostName());
 	<p> Service : <a href="services/employee/getEmployeeDetails">Get Employee Details </p>
 <hr>
 <hr>
-<p align=center>Mithun Technologies - Consultant, Training, Development Center.1234..</p>
-<p align=center><small>Copyrights 2019 by <a href="http://mithuntechnologies.com/">Mithun Technologies</a> </small></p>
+<p align=center>Rajas Technologies - Consultant, Training, Development Center.1234..</p>
+<p align=center><small>Copyrights 2019 by <a href="http://mithuntechnologies.com/">Rajas Technologies</a> </small></p>
 
 </body>
 </html>
